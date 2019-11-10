@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1698f0</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorBackgroundLayout">#202020</color>
+    <color name="colorBackgroundLayoutLess">#242423</color>
+    <color name="colorButtonPass">#181818</color>
+    <color name="colorButton">#1c1c1c</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorGrey">#979b9e</color>
+    <color name="colorGrey1">#c3c3c3 </color>
+    <color name="colorGrey2">#f0eff5</color>
+    <color name="CornflowerBlue">#6495ED</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#333333</color>
+    <color name="colorGreens">#00a123</color>
+    <color name="colorBlack">#333333</color>
+    <color name="colorRed">#ff2100</color>
+    <color name="colorGreen">#02cb66</color>
+    <color name="colorBlue">#448ccb</color>
+    <color name="font_color">#aaaaaa</color>
+    <color name="touch_color">#448ccb</color>
+    <color name="main_color">#1798f2</color>
+    <color name="text_color">#a3a3a3</color>
+    <color name="textcolor_publish_buying">#d28662</color>
+    <color name="color_background_publish">#fdfcea</color>
+    <color name="tvCNY">#00C853</color>
+</resources>

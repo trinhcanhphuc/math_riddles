@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Math Riddles</string>
+    <string name="action_close">Close</string>
+
+    <!-- Common error -->
+    <string name="undefined_error">An error occurred</string>
+    <string name="err_network_not_connected">Can not connect to server!</string>
+    <string name="err_network_not_available">No internet connection!</string>
+    <string name="err_invalid_token">Invalid Token</string>
+    <string name="service_reponse_error_no_code">Unknown error code</string>
+    <string name="service_reponse_error_expired_login">Login session has expired!</string>
+    <string name="err_timeout">Connection timed out, can not connect to the server!</string>
+    <string name="err_server">Server error, please try again</string>
+
+    <!-- Home page-->
+    <string name="play">Play</string>
+    <string name="levels">Levels</string>
+    <string name="follow_us">Follow us</string>
+    <string name="sounds_on">Sounds on</string>
+    <string name="restart">Restart</string>
+    <string name="exit">Exit</string>
+
+    <string name="privacy_policy">Privacy Policy</string>
+
+</resources>
