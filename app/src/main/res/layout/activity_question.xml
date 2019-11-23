@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screen.level.QuestionActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <fragment
+            android:id="@+id/question"
+            android:name="com.math_riddles.screen.level.QuestionFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".80" >
+        </fragment>
+
+        <fragment
+            android:id="@+id/keyboard"
+            android:layout_below="@+id/question"
+            android:name="com.math_riddles.screen.question.KeyboardFragment"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".20" >
+        </fragment>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

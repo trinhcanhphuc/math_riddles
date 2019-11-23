@@ -13,14 +13,19 @@
     <string name="err_timeout">Connection timed out, can not connect to the server!</string>
     <string name="err_server">Server error, please try again</string>
 
-    <!-- Home page-->
     <string name="play">Play</string>
     <string name="levels">Levels</string>
     <string name="follow_us">Follow us</string>
     <string name="sounds_on">Sounds on</string>
     <string name="restart">Restart</string>
     <string name="exit">Exit</string>
-
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="cancel">Cancel</string>
+    <string name="exit_game">Exit Game?</string>
+
+    <string name="next_level">Next Level</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

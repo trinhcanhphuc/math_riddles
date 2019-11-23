@@ -1,10 +1,13 @@
 package com.math_riddles.core.base;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -14,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.math_riddles.R;
@@ -41,6 +45,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 	@Nullable @BindView(R.id.tv_title) protected TextView mTitle;
 
 	protected abstract int getLayoutResourceId();
+
+	protected void initElement() {
+
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -171,15 +179,30 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 		}
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			onBackPressed();
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		switch (item.getItemId()) {
+//		case android.R.id.home:
+//			onBackPressed();
+//			return true;
+//		default:
+//			return super.onOptionsItemSelected(item);
+//		}
+//	}
+
+	public  void enableActivity() {
+		getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+	}
+
+	public void disableActivity() {
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+				WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+	}
+
+	public void openWebURL(String inURL) {
+		Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(inURL));
+
+		startActivity(browse);
 	}
 }
 

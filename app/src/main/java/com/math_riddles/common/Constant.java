@@ -36,5 +36,8 @@ public class Constant {
 	public static final String DATE_FORMAT_HYPHEN_MDY_12h = "MM/dd/yyyy h:mm a";
 	public static final String TIME_FORMAT_24H = "HH:mm";
 	public static final String TIME_FORMAT_12H = "hh:mm a";
+
+
+	public static final String INSTAGRAM_LINK = "https://www.instagram.com/phuctrinh1994/";
 }
 

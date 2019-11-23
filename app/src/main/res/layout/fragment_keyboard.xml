@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screen.question.KeyboardFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+
+        android:shrinkColumns="0"
+        android:stretchColumns="*">
+
+        <TableRow>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_span="2">
+
+                <EditText
+                    android:id="@+id/answer"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".70"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:hint="Answer"
+                    android:longClickable="false"
+                    android:maxLength="5" />
+
+                <ImageButton
+                    android:id="@+id/clear_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".30"
+                    android:background="@drawable/clear"
+                    android:onClick="clearAnswer"
+                    tools:ignore="OnClick" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/hint_btn"
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:onClick="hint"
+                android:text="HINT"
+                tools:ignore="OnClick" />
+
+            <Button
+                android:id="@+id/enter_btn"
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:layout_span="2"
+                android:onClick="submitAnswer"
+                android:text="ENTER"
+                tools:ignore="OnClick" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:onClick="clickNumber"
+                android:tag="1"
+                android:text="1"
+                tools:ignore="OnClick" />
+
+            <Button
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:onClick="clickNumber"
+                android:tag="2"
+                android:text="2"
+                tools:ignore="OnClick" />
+
+            <Button
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:onClick="clickNumber"
+                android:tag="3"
+                android:text="3"
+                tools:ignore="OnClick" />
+
+            <Button
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:onClick="clickNumber"
+                android:tag="4"
+                android:text="4"
+                tools:ignore="OnClick" />
+
+            <Button
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:onClick="clickNumber"
+                android:tag="5"
+                android:text="5"
+                tools:ignore="OnClick" />
+        </TableRow>
+
+        <TableRow>
+            <Button
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:onClick="clickNumber"
+                android:tag="6"
+                android:text="6"
+                tools:ignore="OnClick" />
+
+            <Button
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:onClick="clickNumber"
+                android:tag="7"
+                android:text="7"
+                tools:ignore="OnClick" />
+
+            <Button
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:onClick="clickNumber"
+                android:tag="8"
+                android:text="8"
+                tools:ignore="OnClick" />
+
+            <Button
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:onClick="clickNumber"
+                android:tag="9"
+                android:text="9"
+                tools:ignore="OnClick" />
+
+            <Button
+                android:layout_width="0dp"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shadow_button"
+                android:onClick="clickNumber"
+                android:tag="0"
+                android:text="0"
+                tools:ignore="OnClick" />
+        </TableRow>
+    </TableLayout>
+
+</FrameLayout>

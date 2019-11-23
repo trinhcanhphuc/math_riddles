@@ -2,10 +2,10 @@
 <resources>
     <color name="colorPrimary">#1698f0</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorBackgroundLayout">#202020</color>
-    <color name="colorBackgroundLayoutLess">#242423</color>
+    <color name="colorBackgroundLayout">#1B1B1B</color>
+    <color name="colorBackgroundLayoutLess">#1B1B1B</color>
     <color name="colorButtonPass">#181818</color>
-    <color name="colorButton">#1c1c1c</color>
+    <color name="colorButton">#1A1A1A</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorGrey">#979b9e</color>
