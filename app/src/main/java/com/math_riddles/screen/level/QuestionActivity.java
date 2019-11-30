@@ -16,10 +16,18 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.math_riddles.R;
+import com.math_riddles.common.Constant;
 import com.math_riddles.core.base.BaseActivity;
+import com.math_riddles.core.model.Question;
+import com.math_riddles.core.repository.QuestionRepository;
 import com.math_riddles.screen.question.KeyboardFragment;
 
 import org.w3c.dom.Text;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 public class QuestionActivity extends BaseActivity
         implements QuestionFragment.OnFragmentInteractionListener,
@@ -28,6 +36,8 @@ public class QuestionActivity extends BaseActivity
     protected int level;
     protected EditText answerET;
     protected TextView questionContentTV;
+    protected Question q;
+
 
     @Override
     protected int getLayoutResourceId() {
@@ -40,10 +50,10 @@ public class QuestionActivity extends BaseActivity
 
         Intent questionIntent = getIntent();
         level = questionIntent.getIntExtra("level", 1);
-        String question = getQuestionById(level);
+        q = QuestionRepository.getQuestionById(level);
 
         questionContentTV = (TextView) findViewById(R.id.question_content);
-        questionContentTV.setText(question);
+        questionContentTV.setText(q.getQuestion());
 
         answerET = (EditText) findViewById(R.id.answer);
         answerET.setShowSoftInputOnFocus(false);
@@ -127,15 +137,13 @@ public class QuestionActivity extends BaseActivity
         return "A = 50 B = 10 A / B = 5";
     }
 
-    private String getAnswer(int level) { return Integer.toString(5);}
+    private String getAnswer(int level) {
+        Log.d("question: ", q.toString());
+        return q.getAnswer(); }
 
     private void updateAnswerByValueFromKeyboard(String value) {
         EditText answer = (EditText) findViewById(R.id.answer);
         answer.setText(answer.getText() + value);
-    }
-
-    private String getQuestionById(int level) {
-        return "A + B = 60\nA - B = 40\nA / B = ?";
     }
 
     @Override
