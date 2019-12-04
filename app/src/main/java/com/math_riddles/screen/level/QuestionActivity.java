@@ -52,10 +52,10 @@ public class QuestionActivity extends BaseActivity
         level = questionIntent.getIntExtra("level", 1);
         q = QuestionRepository.getQuestionById(level);
 
-        questionContentTV = (TextView) findViewById(R.id.question_content);
+        questionContentTV = findViewById(R.id.question_content);
         questionContentTV.setText(q.getQuestion());
 
-        answerET = (EditText) findViewById(R.id.answer);
+        answerET = findViewById(R.id.answer);
         answerET.setShowSoftInputOnFocus(false);
 
         Log.d("level: %d", Integer.toString(level));
@@ -124,7 +124,7 @@ public class QuestionActivity extends BaseActivity
     }
 
     private boolean isAnswerTrue(int level) {
-        EditText answerET = (EditText) findViewById(R.id.answer);
+        EditText answerET = findViewById(R.id.answer);
         String answerFromUser = answerET.getText().toString();
         return answerFromUser.equals(getAnswer(level));
     }
@@ -142,7 +142,7 @@ public class QuestionActivity extends BaseActivity
         return q.getAnswer(); }
 
     private void updateAnswerByValueFromKeyboard(String value) {
-        EditText answer = (EditText) findViewById(R.id.answer);
+        EditText answer = findViewById(R.id.answer);
         answer.setText(answer.getText() + value);
     }
 
