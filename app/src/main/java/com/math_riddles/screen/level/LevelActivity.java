@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.math_riddles.R;
 import com.math_riddles.core.base.BaseActivity;
+import com.math_riddles.core.repository.QuestionRepository;
 
 public class LevelActivity extends BaseActivity {
 
@@ -44,12 +45,12 @@ public class LevelActivity extends BaseActivity {
         enableActivity();
     }
 
-    private int getNumberLevels() {
-        return 100;
+    private long getNumberLevels() {
+        return QuestionRepository.getNumberQuestions();
     }
 
     private void createLevelRows(TableLayout table) {
-        int numLevels = getNumberLevels();
+        long numLevels = getNumberLevels();
 
 
         for (int r=0; r<numLevels/5; r++) {

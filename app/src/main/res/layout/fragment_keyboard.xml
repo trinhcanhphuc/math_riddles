@@ -48,7 +48,7 @@
                 android:layout_width="0dp"
                 android:textColor="@color/text_color"
                 android:background="@drawable/shadow_button"
-                android:onClick="hint"
+                android:onClick="showHintPopup"
                 android:text="HINT"
                 tools:ignore="OnClick" />
 

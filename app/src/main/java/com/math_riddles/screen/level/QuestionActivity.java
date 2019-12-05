@@ -37,7 +37,8 @@ public class QuestionActivity extends BaseActivity
     protected EditText answerET;
     protected TextView questionContentTV;
     protected Question q;
-
+    protected View popupView;
+    protected PopupWindow popupWindow;
 
     @Override
     protected int getLayoutResourceId() {
@@ -61,9 +62,18 @@ public class QuestionActivity extends BaseActivity
         Log.d("level: %d", Integer.toString(level));
     }
 
+    private long getNumberLevels() {
+        return QuestionRepository.getNumberQuestions();
+    }
+
     public void submitAnswer(View view) {
         if (isAnswerTrue(level)) {
-            showSuccessPopup(view);
+            if (level == getNumberLevels()) {
+                showChampionPopup(view);
+            }
+            else {
+                showSuccessPopup(view);
+            }
         }
         else {
             showWrongAlert(view);
@@ -74,30 +84,59 @@ public class QuestionActivity extends BaseActivity
         answerET.setText("");
     }
 
-    public void hint(View view) {
-
-    }
-
     public void clickNumber(View view) {
         String number = view.getTag().toString();
         updateAnswerByValueFromKeyboard(number);
     }
 
-    private void showSuccessPopup(View view) {
+    private void showPopup(View view, int layoutId) {
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup_success, null);
+        popupView = inflater.inflate(layoutId, null);
 
         // create the popup window
         int width = LinearLayout.LayoutParams.MATCH_PARENT;
         int height = LinearLayout.LayoutParams.MATCH_PARENT;
         boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow = new PopupWindow(popupView, width, height, focusable);
 
         // show the popup window
         // which view you pass in doesn't matter, it is only used for the window tolken
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+    }
+
+    private void showChampionPopup(View view) {
+        showPopup(view, R.layout.popup_champion);
+
+        Button return_level_page_btn = (Button) popupView.findViewById(R.id.return_level_page_btn);
+        return_level_page_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent levelsIntent = new Intent(view.getContext(), LevelActivity.class);
+                startActivity(levelsIntent);
+                finish();
+            }
+        });
+    }
+
+    public void showHintPopup(View view) {
+        showPopup(view, R.layout.popup_hint);
+
+        TextView solutionTV = popupView.findViewById(R.id.solution_tv);
+        solutionTV.setText(getSolution());
+
+        Button exitBtn = popupView.findViewById(R.id.exit_btn);
+        exitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+            }
+        });
+    }
+
+    private void showSuccessPopup(View view) {
+        showPopup(view, R.layout.popup_success);
 
         Button nextLevelBtn = (Button) popupView.findViewById(R.id.next_level_btn);
         nextLevelBtn.setOnClickListener(new View.OnClickListener() {
@@ -119,22 +158,14 @@ public class QuestionActivity extends BaseActivity
 
     }
 
-    private void answerFalse() {
-        Log.d("answer is ", "false");
-    }
-
     private boolean isAnswerTrue(int level) {
         EditText answerET = findViewById(R.id.answer);
         String answerFromUser = answerET.getText().toString();
         return answerFromUser.equals(getAnswer(level));
     }
 
-    private String getHint(int level) {
-        return "A B + A B";
-    }
-
-    private String getSolution(int level) {
-        return "A = 50 B = 10 A / B = 5";
+    private String getSolution() {
+        return q.getSolution();
     }
 
     private String getAnswer(int level) {

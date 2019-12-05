@@ -45,4 +45,9 @@ public class QuestionRepository extends BaseRepository {
         Realm realm = getRealm();
         return realm.where(Question.class).findAll();
     }
+
+    public static long getNumberQuestions() {
+        Realm realm = getRealm();
+        return realm.where(Question.class).count();
+    }
 }

@@ -24,6 +24,8 @@
     <string name="exit_game">Exit Game?</string>
 
     <string name="next_level">Next Level</string>
+    <string name="return_level_page">Return Level Page</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
