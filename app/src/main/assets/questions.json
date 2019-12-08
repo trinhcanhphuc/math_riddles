@@ -13,9 +13,9 @@
  },
  {
    "id": 3,
-   "question": "A + A = 8\n2B + A = 14\nC + B = 11\nC = ?",
+   "question": "▢ + ▢ = 8\n❍ + ▢ = 14\n△ + ◯ = 11\n△ = ?",
    "answer": "6",
-   "solution": "A + A = 8\n2B + A = 14\nC + B = 11\nC = 6"
+   "solution": "▢ + ▢ = 8\n❍ + ▢ = 14\n△ + ◯ = 11\n△ = 6"
  },
  {
    "id": 4,
