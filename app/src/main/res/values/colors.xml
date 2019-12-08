@@ -12,8 +12,6 @@
     <color name="colorGrey1">#c3c3c3 </color>
     <color name="colorGrey2">#f0eff5</color>
     <color name="CornflowerBlue">#6495ED</color>
-    <color name="white">#ffffff</color>
-    <color name="black">#333333</color>
     <color name="colorGreens">#00a123</color>
     <color name="colorBlack">#333333</color>
     <color name="colorRed">#ff2100</color>
@@ -27,12 +25,8 @@
     <color name="color_background_publish">#fdfcea</color>
     <color name="tvCNY">#00C853</color>
 
+    <color name="active">#73ba25</color>
+    <color name="warning">#ffd23f</color>
+    <color name="danger">#e32626</color>
 
-    <!--  Buttons  -->
-    <color name="button_background_active_color">#73ba25</color>
-    <color name="button_foreground_active_color">#fff</color>
-    <color name="button_background_warning_color">#ffd23f</color>
-    <color name="button_foreground_warning_color">#fff</color>
-    <color name="button_background_danger_color">#e32626</color>
-    <color name="button_foreground_danger_color">#fff</color>
 </resources>
