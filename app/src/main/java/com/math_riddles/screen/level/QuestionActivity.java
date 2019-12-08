@@ -3,11 +3,9 @@ package com.math_riddles.screen.level;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,18 +14,10 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.math_riddles.R;
-import com.math_riddles.common.Constant;
 import com.math_riddles.core.base.BaseActivity;
 import com.math_riddles.core.model.Question;
 import com.math_riddles.core.repository.QuestionRepository;
 import com.math_riddles.screen.question.KeyboardFragment;
-
-import org.w3c.dom.Text;
-
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
 
 public class QuestionActivity extends BaseActivity
         implements QuestionFragment.OnFragmentInteractionListener,
@@ -42,7 +32,7 @@ public class QuestionActivity extends BaseActivity
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.activity_question;
+        return R.layout.question_activity;
     }
 
     @Override
@@ -107,7 +97,7 @@ public class QuestionActivity extends BaseActivity
     }
 
     private void showChampionPopup(View view) {
-        showPopup(view, R.layout.popup_champion);
+        showPopup(view, R.layout.popup_question_champion);
 
         Button return_level_page_btn = (Button) popupView.findViewById(R.id.return_level_page_btn);
         return_level_page_btn.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +111,7 @@ public class QuestionActivity extends BaseActivity
     }
 
     public void showHintPopup(View view) {
-        showPopup(view, R.layout.popup_hint);
+        showPopup(view, R.layout.popup_question_hint);
 
         TextView solutionTV = popupView.findViewById(R.id.solution_tv);
         solutionTV.setText(getSolution());
@@ -136,7 +126,7 @@ public class QuestionActivity extends BaseActivity
     }
 
     private void showSuccessPopup(View view) {
-        showPopup(view, R.layout.popup_success);
+        showPopup(view, R.layout.popup_question_success);
 
         Button nextLevelBtn = (Button) popupView.findViewById(R.id.next_level_btn);
         nextLevelBtn.setOnClickListener(new View.OnClickListener() {

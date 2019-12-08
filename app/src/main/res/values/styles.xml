@@ -37,7 +37,7 @@
     <!-- Splash Theme -->
     <style name="AppTheme.Splash" parent="AppTheme.NoActionBar">
         <item name="android:statusBarColor">@color/colorPrimary</item>
-        <item name="android:windowBackground">@color/colorBackgroundLayoutLess</item>
+        <item name="android:windowBackground">@color/color_background_publish</item>
         <item name="android:adjustViewBounds">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:scaleType">centerCrop</item>

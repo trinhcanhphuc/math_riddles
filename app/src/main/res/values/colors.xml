@@ -26,4 +26,13 @@
     <color name="textcolor_publish_buying">#d28662</color>
     <color name="color_background_publish">#fdfcea</color>
     <color name="tvCNY">#00C853</color>
+
+
+    <!--  Buttons  -->
+    <color name="button_background_active_color">#73ba25</color>
+    <color name="button_foreground_active_color">#fff</color>
+    <color name="button_background_warning_color">#ffd23f</color>
+    <color name="button_foreground_warning_color">#fff</color>
+    <color name="button_background_danger_color">#e32626</color>
+    <color name="button_foreground_danger_color">#fff</color>
 </resources>

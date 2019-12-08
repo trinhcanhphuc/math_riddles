@@ -19,6 +19,25 @@ android {
         }
     }
 
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res/layout/main',
+                            'src/main/res/layout/home',
+                            'src/main/res/layout/level',
+                            'src/main/res/layout/question',
+                            'src/main/res/layout/login',
+
+                            'src/main/res/layout/dialog',
+                            'src/main/res/layout/popup',
+
+                            'src/main/res/layout',
+                            'src/main/res'
+                    ]
+        }
+    }
+
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'

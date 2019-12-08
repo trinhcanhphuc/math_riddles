@@ -1,21 +1,15 @@
 package com.math_riddles.screen.level;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
 import com.math_riddles.R;
 import com.math_riddles.core.base.BaseActivity;
@@ -25,7 +19,7 @@ public class LevelActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.activity_level;
+        return R.layout.level_activity;
     }
 
     @Override
@@ -80,7 +74,7 @@ public class LevelActivity extends BaseActivity {
         b.getLayoutParams().width = 0;
         final float scale = b.getContext().getResources().getDisplayMetrics().density;
         b.getLayoutParams().height = (int) (80 * scale + 0.5f);
-        b.setBackground(getDrawable(R.drawable.shadow_button));
+        b.setBackground(getDrawable(R.drawable.custom_button));
         b.setTextColor(getColor(R.color.text_color));
         b.setTextSize(20);
         b.setTypeface(Typeface.MONOSPACE);
