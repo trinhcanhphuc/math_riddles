@@ -74,7 +74,7 @@ public class LevelActivity extends BaseActivity {
         b.getLayoutParams().width = 0;
         final float scale = b.getContext().getResources().getDisplayMetrics().density;
         b.getLayoutParams().height = (int) (80 * scale + 0.5f);
-        b.setBackground(getDrawable(R.drawable.custom_button));
+        b.setBackground(getDrawable(R.drawable.shape_button_active));
         b.setTextColor(getColor(R.color.text_color));
         b.setTextSize(20);
         b.setTypeface(Typeface.MONOSPACE);

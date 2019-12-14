@@ -27,7 +27,7 @@
     </style>
     <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorPrimary</item>
-        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
         <!--<item name="android:background">@color/colorPrimary</item>-->
     </style>
 
@@ -43,21 +43,24 @@
         <item name="android:scaleType">centerCrop</item>
     </style>
 
-    <style name="custom_button">
+    <style name="home_button">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:paddingLeft">30dp</item>
         <item name="android:paddingRight">30dp</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20dp</item>
     </style>
 
-    <style name="custom_button_active" parent="custom_button">
-        <item name="android:backgroundTint">@color/active</item>
-    </style>
-
-    <style name="home_button" parent="custom_button_active">
-        <item name="android:layout_width">200dp</item>
+    <style name="dialog_home_button">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">14dp</item>
     </style>
 
 </resources>

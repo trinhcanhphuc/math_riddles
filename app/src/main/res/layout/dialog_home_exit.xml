@@ -22,15 +22,13 @@
 
         <Button
             android:id="@+id/dialog_cancel_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@drawable/shape_button_active"
+            style="@style/dialog_home_button"
             android:text="@string/cancel" />
         <Button
             android:id="@+id/dialog_exit_btn"
-            android:textColor="@color/text_color"
-            android:background="@color/colorButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@drawable/shape_button_danger"
+            style="@style/dialog_home_button"
             android:text="@string/exit" />
     </LinearLayout>
 </LinearLayout>

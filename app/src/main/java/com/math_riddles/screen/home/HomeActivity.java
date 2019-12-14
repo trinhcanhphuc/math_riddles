@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.math_riddles.screen.level.LevelActivity;
 import com.math_riddles.R;
@@ -27,7 +29,7 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         // Trigger events
-        Button playBtn = (Button) findViewById(R.id.play_btn);
+        ImageButton playBtn = (ImageButton) findViewById(R.id.play_btn);
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
