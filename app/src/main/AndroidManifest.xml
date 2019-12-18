@@ -30,6 +30,10 @@
         </activity>
         <activity android:name=".screen.level.LevelActivity" />
         <activity android:name=".screen.level.QuestionActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -33,7 +33,7 @@
 
     <item
         android:gravity="center"
-        android:width="60dp"
+        android:width="40dp"
         android:height="60dp"
         >
         <vector android:height="24dp"
