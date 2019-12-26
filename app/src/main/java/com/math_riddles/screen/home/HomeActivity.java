@@ -29,7 +29,7 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         // Trigger events
-        ImageButton playBtn = (ImageButton) findViewById(R.id.play_btn);
+        Button playBtn = (Button) findViewById(R.id.play_btn);
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

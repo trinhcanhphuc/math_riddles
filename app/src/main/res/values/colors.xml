@@ -7,7 +7,6 @@
     <color name="colorButtonPass">#181818</color>
     <color name="colorButton">#1A1A1A</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorWhite">#ffffff</color>
     <color name="colorGrey">#979b9e</color>
     <color name="colorGrey1">#c3c3c3 </color>
     <color name="colorGrey2">#f0eff5</color>
@@ -25,8 +24,9 @@
     <color name="color_background_publish">#fdfcea</color>
     <color name="tvCNY">#00C853</color>
 
-    <color name="active">#73ba25</color>
-    <color name="warning">#ffd23f</color>
-    <color name="danger">#e32626</color>
+    <color name="active">#32AD81</color>
+    <color name="warning">#E09F17</color>
+    <color name="danger">#F15053</color>
+    <color name="white">#E2E2E2</color>
 
 </resources>
