@@ -4,9 +4,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import com.math_riddles.screen.level.LevelActivity;
 import com.math_riddles.R;
@@ -101,7 +100,8 @@ public class HomeActivity extends BaseActivity {
     }
 
     protected void exitConfirm(View v) {
-        exitDialog = new Dialog(this);
+        exitDialog = new Dialog(this, R.style.Theme_Design_Light);
+        exitDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         exitDialog.setTitle("");
         exitDialog.setContentView(R.layout.dialog_home_exit);
         exitDialog.show();

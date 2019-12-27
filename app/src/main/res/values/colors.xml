@@ -28,5 +28,6 @@
     <color name="warning">#E09F17</color>
     <color name="danger">#F15053</color>
     <color name="white">#E2E2E2</color>
+    <color name="dark">#60687C</color>
 
 </resources>

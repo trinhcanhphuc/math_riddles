@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:background="@drawable/background_blur"
+    android:gravity="center"
     android:orientation="vertical">
 
     <TextView
@@ -10,25 +11,33 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/exit_game"
-        android:textSize="16sp"
+        android:textSize="32dp"
+        android:fontFamily="@font/noteworthy"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <LinearLayout
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/dialog_cancel_btn"
-            android:background="@drawable/shape_button_active"
-            style="@style/dialog_home_button"
-            android:text="@string/cancel" />
-        <Button
             android:id="@+id/dialog_exit_btn"
-            android:background="@drawable/shape_button_danger"
+            android:background="@drawable/button_yes"
             style="@style/dialog_home_button"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
             android:text="@string/exit" />
+        <Button
+            android:id="@+id/dialog_cancel_btn"
+            android:background="@drawable/button_no"
+            android:layout_width="160dp"
+            style="@style/dialog_home_button"
+            android:textColor="@color/dark"
+            android:paddingRight="40dp"
+            android:paddingBottom="10dp"
+            android:text="@string/cancel" />
     </LinearLayout>
 </LinearLayout>

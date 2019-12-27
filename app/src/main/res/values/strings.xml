@@ -22,7 +22,7 @@
     <string name="exit">Exit</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="cancel">Cancel</string>
-    <string name="exit_game">Exit Game?</string>
+    <string name="exit_game">Do You Want To Exit?</string>
 
     <string name="next_level">Next Level</string>
     <string name="return_level_page">Return Level Page</string>
