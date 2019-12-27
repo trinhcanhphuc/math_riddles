@@ -4,18 +4,35 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.Toast;
 
 import com.math_riddles.R;
+import com.math_riddles.common.CenterZoomLayoutManager;
 import com.math_riddles.core.base.BaseActivity;
 import com.math_riddles.core.repository.QuestionRepository;
 
+import java.util.ArrayList;
+
 public class LevelActivity extends BaseActivity {
+    RecyclerView recyclerView;
+    ArrayList<String> Number;
+    RecyclerView.LayoutManager RecyclerViewLayoutManager;
+    RecyclerViewAdapter RecyclerViewHorizontalAdapter;
+    CenterZoomLayoutManager HorizontalLayout ;
+    View ChildView ;
+    int RecyclerViewItemPosition ;
 
     @Override
     protected int getLayoutResourceId() {
@@ -29,8 +46,75 @@ public class LevelActivity extends BaseActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(R.string.levels);
 
-        TableLayout table = (TableLayout) findViewById(R.id.levels_table);
-        createLevelRows(table);
+        initCardList();
+    }
+
+    public void initCardList() {
+        View levelList = findViewById( R.id.level_list );
+        recyclerView = levelList.findViewById(R.id.rv);
+
+        RecyclerViewLayoutManager = new CenterZoomLayoutManager(getApplicationContext());
+
+        recyclerView.setLayoutManager(RecyclerViewLayoutManager);
+
+        // Adding items to RecyclerView.
+        AddItemsToRecyclerViewArrayList();
+
+        RecyclerViewHorizontalAdapter = new RecyclerViewAdapter(Number);
+
+        HorizontalLayout = new CenterZoomLayoutManager(LevelActivity.this, CenterZoomLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(HorizontalLayout);
+
+        recyclerView.setAdapter(RecyclerViewHorizontalAdapter);
+
+
+        // Adding on item click listener to RecyclerView.
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+
+            GestureDetector gestureDetector = new GestureDetector(LevelActivity.this, new GestureDetector.SimpleOnGestureListener() {
+
+                @Override public boolean onSingleTapUp(MotionEvent motionEvent) {
+
+                    return true;
+                }
+
+            });
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+
+                ChildView = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+
+                if(ChildView != null && gestureDetector.onTouchEvent(motionEvent)) {
+
+                    RecyclerViewItemPosition = recyclerView.getChildAdapterPosition(ChildView);
+
+                    Intent questionIntent = new Intent(recyclerView.getContext(), QuestionActivity.class);
+                    questionIntent.putExtra("level", RecyclerViewItemPosition + 1);
+                    startActivity(questionIntent);
+                }
+
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView Recyclerview, MotionEvent motionEvent) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
+    }
+
+    public void AddItemsToRecyclerViewArrayList(){
+
+        Number = new ArrayList<>();
+        long numLevels = getNumberLevels();
+        for(long i = 0; i < numLevels; i++) {
+            Number.add(Long.toString(i+1));
+        }
     }
 
     @Override
@@ -41,42 +125,5 @@ public class LevelActivity extends BaseActivity {
 
     private long getNumberLevels() {
         return QuestionRepository.getNumberQuestions();
-    }
-
-    private void createLevelRows(TableLayout table) {
-        long numLevels = getNumberLevels();
-
-
-        for (int r=0; r<numLevels/5; r++) {
-            TableRow tr = new TableRow(this);
-            for (int c=0; c<5; c++) {
-                createLevelButton(tr, r*5+c+1);
-            }
-            table.addView(tr);
-        }
-    }
-
-    private void createLevelButton(LinearLayout tableRow, int level) {
-        Button b = new Button (this);
-        b.setText(Integer.toString(level));
-        b.setTextSize(10.0f);
-        b.setTextColor(Color.rgb( 100, 200, 200));
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                disableActivity();
-                Intent questionIntent = new Intent(view.getContext(), QuestionActivity.class);
-                questionIntent.putExtra("level",level);
-                startActivity(questionIntent);
-            }
-        });
-        tableRow.addView(b);
-        b.getLayoutParams().width = 0;
-        final float scale = b.getContext().getResources().getDisplayMetrics().density;
-        b.getLayoutParams().height = (int) (80 * scale + 0.5f);
-        b.setBackground(getDrawable(R.drawable.shape_button_active));
-        b.setTextColor(getColor(R.color.text_color));
-        b.setTextSize(20);
-        b.setTypeface(Typeface.MONOSPACE);
     }
 }

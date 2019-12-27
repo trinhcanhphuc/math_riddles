@@ -78,8 +78,8 @@ public class HomeActivity extends BaseActivity {
     }
 
     protected void play(View v) {
-        Intent questionIntent = new Intent(v.getContext(), QuestionActivity.class);
-        startActivity(questionIntent);
+        Intent levelsIntent = new Intent(v.getContext(), LevelActivity.class);
+        startActivity(levelsIntent);
     }
 
     protected void levels(View v) {

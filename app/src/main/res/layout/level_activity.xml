@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_weight="1"
-    android:layout_margin="5dp"
-    android:scrollbars="none"
+    android:orientation="vertical"
+
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <TableLayout android:id="@+id/levels_table"
-        android:layout_width="match_parent"
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_back"
+        android:text="@string/back"
+        />
+
+    <LinearLayout
         android:layout_height="match_parent"
-        android:shrinkColumns="0"
-        android:stretchColumns="*"
-        xmlns:android="http://schemas.android.com/apk/res/android">
-    </TableLayout>
-</ScrollView>
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Challenge 1"
+            android:textColor="@color/danger"
+            android:textSize="48dp"
+            android:fontFamily="@font/noteworthy"
+            android:layout_marginBottom="50dp"
+            android:textStyle="bold"
+            />
+
+        <include android:id="@+id/level_list" layout="@layout/card_list" />
+
+<!--        <TableLayout android:id="@+id/levels_table"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:shrinkColumns="0"-->
+<!--            android:stretchColumns="*"-->
+<!--            xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--        </TableLayout>-->
+    </LinearLayout>
+</LinearLayout>
