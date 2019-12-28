@@ -7,7 +7,9 @@ import android.net.NetworkInfo;
 
 import com.math_riddles.common.Constant;
 import com.math_riddles.core.model.Challenge;
+import com.math_riddles.core.model.Score;
 import com.math_riddles.core.repository.ChallengeRepository;
+import com.math_riddles.core.repository.ScoreRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +30,7 @@ public class MathRiddlesApplication extends Application {
     private Scheduler mScheduler;
     private static RealmConfiguration realmConfig;
     private ChallengeRepository challengeRepository;
+    private ScoreRepository scoreRepository;
 
     @Override
     public void onCreate() {
@@ -36,6 +39,7 @@ public class MathRiddlesApplication extends Application {
         sInstance = this;
 
         challengeRepository = new ChallengeRepository();
+        scoreRepository = new ScoreRepository();
 
         this.initRealm();
         this.initDB();
@@ -56,6 +60,7 @@ public class MathRiddlesApplication extends Application {
         if (!isDBHasData()) {
             ArrayList<Challenge> challenges = loadAllChallenges();
             challengeRepository.insertAll(challenges);
+            scoreRepository.insert(new Score(1, 1));
         }
     }
 

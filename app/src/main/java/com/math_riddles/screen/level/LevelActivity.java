@@ -11,6 +11,7 @@ import com.math_riddles.R;
 import com.math_riddles.common.CenterZoomLayoutManager;
 import com.math_riddles.core.base.BaseActivity;
 import com.math_riddles.core.repository.ChallengeRepository;
+import com.math_riddles.core.repository.ScoreRepository;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ public class LevelActivity extends BaseActivity {
     View ChildView ;
     int RecyclerViewItemPosition ;
     private ChallengeRepository challengeRepository;
+    private ScoreRepository scoreRepository;
 
     @Override
     protected int getLayoutResourceId() {
@@ -34,6 +36,7 @@ public class LevelActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         challengeRepository = new ChallengeRepository();
+        scoreRepository = new ScoreRepository();
         initCardList();
     }
 
@@ -76,9 +79,13 @@ public class LevelActivity extends BaseActivity {
 
                     RecyclerViewItemPosition = recyclerView.getChildAdapterPosition(ChildView);
 
-                    Intent challengeIntent = new Intent(recyclerView.getContext(), ChallengeActivity.class);
-                    challengeIntent.putExtra("level", RecyclerViewItemPosition + 1);
-                    startActivity(challengeIntent);
+                    int level = RecyclerViewItemPosition + 1;
+                    if (level <= getCurrentLevel()) {
+                        executeChallenge(level);
+                    }
+                    else {
+                        unlockPreChallenge(level);
+                    }
                 }
 
                 return false;
@@ -96,12 +103,27 @@ public class LevelActivity extends BaseActivity {
         });
     }
 
+    private void executeChallenge(int level) {
+
+        Intent challengeIntent = new Intent(recyclerView.getContext(), ChallengeActivity.class);
+        challengeIntent.putExtra("level", level);
+        startActivity(challengeIntent);
+    }
+
+    private void unlockPreChallenge(int level) {
+
+    }
+
     public void AddItemsToRecyclerViewArrayList(){
 
         challenges = new ArrayList<>();
         int numLevels = getNumberLevels();
+        int currentLevel = getCurrentLevel();
         for(int i = 0; i < numLevels; i++) {
-            challenges.add(challengeRepository.getById(i+1).getQuestion());
+            String question = ((i+1) <= currentLevel)
+                    ? challengeRepository.getById(i+1).getQuestion()
+                    : "?";
+            challenges.add(question);
         }
     }
 
@@ -114,5 +136,10 @@ public class LevelActivity extends BaseActivity {
     private int getNumberLevels() {
 
         return challengeRepository.size();
+    }
+
+    private int getCurrentLevel() {
+
+        return scoreRepository.getFirst().getChallengeId();
     }
 }

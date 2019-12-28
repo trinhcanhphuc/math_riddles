@@ -121,7 +121,7 @@ public class ChallengeActivity extends BaseActivity
     }
 
     private void showSuccessPopup(View view) {
-        showPopup(view, R.layout.popup_challenge_success);
+        showPopup(view, R.layout.popup_challenge_correct);
 
         Button nextLevelBtn = popupView.findViewById(R.id.next_level_btn);
         nextLevelBtn.setOnClickListener(view1 -> nextLevel(level));

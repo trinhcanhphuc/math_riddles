@@ -31,13 +31,5 @@
             />
 
         <include android:id="@+id/level_list" layout="@layout/card_list" />
-
-<!--        <TableLayout android:id="@+id/levels_table"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:shrinkColumns="0"-->
-<!--            android:stretchColumns="*"-->
-<!--            xmlns:android="http://schemas.android.com/apk/res/android">-->
-<!--        </TableLayout>-->
     </LinearLayout>
 </LinearLayout>

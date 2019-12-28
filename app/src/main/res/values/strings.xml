@@ -24,10 +24,13 @@
     <string name="cancel">Cancel</string>
     <string name="exit_game">Do You Want To Exit?</string>
 
-    <string name="next_level">Next Level</string>
+    <string name="next_challenge">Next Challenge</string>
     <string name="return_level_page">Return Level Page</string>
 
     <string name="back">Back</string>
+
+    <string name="congrats">Congrats</string>
+    <string name="answer_correct">Your answer is correct</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

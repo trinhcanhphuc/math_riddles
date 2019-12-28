@@ -35,4 +35,12 @@ public class ScoreRepository {
         Realm realm = getRealm();
         return (int) realm.where(Score.class).count();
     }
+
+    public void insert(Score item) {
+        Realm realm = getRealm();
+        realm.beginTransaction();
+        Score realmObject = realm.createObject(Score.class, item.getId());
+        realmObject.setChallengeId(item.getChallengeId());
+        realm.commitTransaction();
+    }
 }
