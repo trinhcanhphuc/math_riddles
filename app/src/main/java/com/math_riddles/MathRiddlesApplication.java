@@ -4,11 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 
 import com.math_riddles.common.Constant;
-import com.math_riddles.core.model.Question;
-import com.math_riddles.core.repository.QuestionRepository;
+import com.math_riddles.core.model.Challenge;
+import com.math_riddles.core.repository.ChallengeRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,33 +16,33 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.RealmResults;
-
-/**
- * @author phuocns on 25/11/2018.
- */
 
 public class MathRiddlesApplication extends Application {
+
     private static MathRiddlesApplication sInstance;
     private Scheduler mScheduler;
     private static RealmConfiguration realmConfig;
+    private ChallengeRepository challengeRepository;
 
     @Override
     public void onCreate() {
+
         super.onCreate();
         sInstance = this;
+
+        challengeRepository = new ChallengeRepository();
 
         this.initRealm();
         this.initDB();
     }
 
     private void initRealm() {
+
         Realm.init(this);
         realmConfig = new RealmConfiguration.Builder()
                 .name(Constant.REALM_DATABASE)
@@ -53,21 +52,25 @@ public class MathRiddlesApplication extends Application {
     }
 
     public void initDB() {
+
         if (!isDBHasData()) {
-            ArrayList<Question> questions = getAllQuestions();
-            QuestionRepository.insertAll(questions);
+            ArrayList<Challenge> challenges = loadAllChallenges();
+            challengeRepository.insertAll(challenges);
         }
     }
 
     public boolean isDBHasData() {
-        return QuestionRepository.getFirstQuestion() != null;
+
+        return challengeRepository.getFirst() != null;
     }
 
-    public static RealmConfiguration getRealmConfig(){
+    public static RealmConfiguration getRealmConfig() {
+
         return realmConfig;
     }
 
     public Scheduler subscribeScheduler() {
+
         if (mScheduler == null) {
             mScheduler = Schedulers.io();
         }
@@ -76,6 +79,7 @@ public class MathRiddlesApplication extends Application {
     }
 
     public boolean isNetworkConnected() {
+
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -88,27 +92,28 @@ public class MathRiddlesApplication extends Application {
     }
 
     public static MathRiddlesApplication getInstance() {
+
         if(sInstance != null) {
             return sInstance;
         }
         throw new IllegalArgumentException("MathRiddlesApplication -> onCreate(): Must call: setInstance(this)");
     }
 
-    public ArrayList<Question> getAllQuestions() {
-        ArrayList<Question> formList = new ArrayList<Question>();
+    public ArrayList<Challenge> loadAllChallenges() {
+
+        ArrayList<Challenge> formList = new ArrayList<>();
         try {
-            JSONArray m_jArry = new JSONArray(loadJSONFromAsset("questions.json"));
-            HashMap<String, String> m_li;
+            JSONArray m_jArry = new JSONArray(loadJSONFromAsset("challenges.json"));
 
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
-                Long id = jo_inside.getLong("id");
+                int id = jo_inside.getInt("id");
                 String question= jo_inside.getString("question");
                 String answer = jo_inside.getString("answer");
                 String solution = jo_inside.getString("solution");
 
                 //Add your values in your `ArrayList` as below:
-                Question item  = new Question(id, question, answer, solution);
+                Challenge item  = new Challenge(id, question, answer, solution);
 
                 formList.add(item);
             }
@@ -119,6 +124,7 @@ public class MathRiddlesApplication extends Application {
     }
 
     public String loadJSONFromAsset(String fileName) {
+
         try {
             InputStream is = getAssets().open(fileName);
             int size = is.available();

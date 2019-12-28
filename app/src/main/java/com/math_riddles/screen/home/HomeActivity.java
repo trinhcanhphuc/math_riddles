@@ -10,9 +10,6 @@ import android.widget.Button;
 import com.math_riddles.screen.level.LevelActivity;
 import com.math_riddles.R;
 import com.math_riddles.core.base.BaseActivity;
-import com.math_riddles.screen.level.QuestionActivity;
-
-import static com.math_riddles.common.Constant.INSTAGRAM_LINK;
 
 public class HomeActivity extends BaseActivity {
 
@@ -20,11 +17,13 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResourceId() {
+
         return R.layout.home_activity;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         // Trigger events
@@ -33,38 +32,6 @@ public class HomeActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 play(view);
-            }
-        });
-
-        Button levelsBtn = (Button) findViewById(R.id.levels_btn);
-        levelsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                levels(view);
-            }
-        });
-
-        Button followUsBtn = (Button) findViewById(R.id.follow_us_btn);
-        followUsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                followUs(view);
-            }
-        });
-
-        Button soundOnBtn = (Button) findViewById(R.id.sound_on_btn);
-        soundOnBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                soundsOn(view);
-            }
-        });
-
-        Button restartBtn = (Button) findViewById(R.id.restart_btn);
-        restartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                restart(view);
             }
         });
 
@@ -78,28 +45,13 @@ public class HomeActivity extends BaseActivity {
     }
 
     protected void play(View v) {
+
         Intent levelsIntent = new Intent(v.getContext(), LevelActivity.class);
         startActivity(levelsIntent);
-    }
-
-    protected void levels(View v) {
-        Intent levelsIntent = new Intent(v.getContext(), LevelActivity.class);
-        startActivity(levelsIntent);
-    }
-
-    protected void followUs(View v) {
-        openWebURL(INSTAGRAM_LINK);
-    }
-
-    protected void soundsOn(View v) {
-        return;
-    }
-
-    protected void restart(View v) {
-        return;
     }
 
     protected void exitConfirm(View v) {
+
         exitDialog = new Dialog(this, R.style.Theme_Design_Light);
         exitDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         exitDialog.setTitle("");
@@ -123,10 +75,12 @@ public class HomeActivity extends BaseActivity {
     }
 
     protected void exitApp(View v) {
+
         System.exit(1);
     }
 
     protected void cancel(View v) {
+
         exitDialog.cancel();
     }
 }

@@ -1,4 +1,4 @@
-package com.math_riddles.screen.question;
+package com.math_riddles.screen.challenge;
 
 import android.content.Context;
 import android.net.Uri;
@@ -66,7 +66,7 @@ public class KeyboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.question_fragment_keyboard, container, false);
+        return inflater.inflate(R.layout.challenge_fragment_keyboard, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

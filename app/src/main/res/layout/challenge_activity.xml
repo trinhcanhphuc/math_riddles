@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screen.level.QuestionActivity">
+    tools:context=".screen.level.ChallengeActivity">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         <fragment
             android:id="@+id/keyboard"
             android:layout_below="@+id/question"
-            android:name="com.math_riddles.screen.question.KeyboardFragment"
+            android:name="com.math_riddles.screen.challenge.KeyboardFragment"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

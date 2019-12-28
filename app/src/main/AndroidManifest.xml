@@ -28,8 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screen.level.LevelActivity" />
-        <activity android:name=".screen.level.QuestionActivity" />
+        <activity android:name=".screen.level.LevelActivity"
+            android:theme="@style/AppTheme.Splash" />
+        <activity android:name=".screen.level.ChallengeActivity"
+            android:theme="@style/AppTheme.Splash" />
 
         <meta-data
             android:name="preloaded_fonts"

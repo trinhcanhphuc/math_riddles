@@ -15,33 +15,36 @@ import android.widget.TextView;
 
 import com.math_riddles.R;
 import com.math_riddles.core.base.BaseActivity;
-import com.math_riddles.core.model.Question;
-import com.math_riddles.core.repository.QuestionRepository;
-import com.math_riddles.screen.question.KeyboardFragment;
+import com.math_riddles.core.model.Challenge;
+import com.math_riddles.core.repository.ChallengeRepository;
+import com.math_riddles.screen.challenge.KeyboardFragment;
 
-public class QuestionActivity extends BaseActivity
+public class ChallengeActivity extends BaseActivity
         implements QuestionFragment.OnFragmentInteractionListener,
         KeyboardFragment.OnFragmentInteractionListener {
 
     protected int level;
     protected EditText answerET;
     protected TextView questionContentTV;
-    protected Question q;
+    protected Challenge q;
     protected View popupView;
     protected PopupWindow popupWindow;
+    private ChallengeRepository challengeRepository;
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.question_activity;
+        return R.layout.challenge_activity;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent questionIntent = getIntent();
-        level = questionIntent.getIntExtra("level", 1);
-        q = QuestionRepository.getQuestionById(level);
+        challengeRepository = new ChallengeRepository();
+
+        Intent challengeIntent = getIntent();
+        level = challengeIntent.getIntExtra("level", 1);
+        q = challengeRepository.getById(level);
 
         questionContentTV = findViewById(R.id.question_content);
         questionContentTV.setText(q.getQuestion());
@@ -53,7 +56,7 @@ public class QuestionActivity extends BaseActivity
     }
 
     private long getNumberLevels() {
-        return QuestionRepository.getNumberQuestions();
+        return challengeRepository.size();
     }
 
     public void submitAnswer(View view) {
@@ -66,7 +69,7 @@ public class QuestionActivity extends BaseActivity
             }
         }
         else {
-            showWrongAlert(view);
+            showWrongAlert();
         }
     }
 
@@ -97,54 +100,41 @@ public class QuestionActivity extends BaseActivity
     }
 
     private void showChampionPopup(View view) {
-        showPopup(view, R.layout.popup_question_champion);
+        showPopup(view, R.layout.popup_challenge_champion);
 
-        Button return_level_page_btn = (Button) popupView.findViewById(R.id.return_level_page_btn);
-        return_level_page_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent levelsIntent = new Intent(view.getContext(), LevelActivity.class);
-                startActivity(levelsIntent);
-                finish();
-            }
+        Button return_level_page_btn = popupView.findViewById(R.id.return_level_page_btn);
+        return_level_page_btn.setOnClickListener(view1 -> {
+            Intent levelsIntent = new Intent(view1.getContext(), LevelActivity.class);
+            startActivity(levelsIntent);
+            finish();
         });
     }
 
     public void showHintPopup(View view) {
-        showPopup(view, R.layout.popup_question_hint);
+        showPopup(view, R.layout.popup_challenge_hint);
 
         TextView solutionTV = popupView.findViewById(R.id.solution_tv);
         solutionTV.setText(getSolution());
 
         Button exitBtn = popupView.findViewById(R.id.exit_btn);
-        exitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                popupWindow.dismiss();
-            }
-        });
+        exitBtn.setOnClickListener(view1 -> popupWindow.dismiss());
     }
 
     private void showSuccessPopup(View view) {
-        showPopup(view, R.layout.popup_question_success);
+        showPopup(view, R.layout.popup_challenge_success);
 
-        Button nextLevelBtn = (Button) popupView.findViewById(R.id.next_level_btn);
-        nextLevelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextLevel(level);
-            }
-        });
+        Button nextLevelBtn = popupView.findViewById(R.id.next_level_btn);
+        nextLevelBtn.setOnClickListener(view1 -> nextLevel(level));
     }
 
     private void nextLevel(int level) {
-        Intent questionIntent = new Intent(this, QuestionActivity.class);
-        questionIntent.putExtra("level", level+1);
-        startActivity(questionIntent);
+        Intent challengeIntent = new Intent(this, ChallengeActivity.class);
+        challengeIntent.putExtra("level", level+1);
+        startActivity(challengeIntent);
         finish();
     }
 
-    private void showWrongAlert(View view) {
+    private void showWrongAlert() {
 
     }
 
@@ -159,7 +149,6 @@ public class QuestionActivity extends BaseActivity
     }
 
     private String getAnswer(int level) {
-        Log.d("question: ", q.toString());
         return q.getAnswer(); }
 
     private void updateAnswerByValueFromKeyboard(String value) {
