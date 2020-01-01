@@ -3,7 +3,6 @@ package com.math_riddles.screen.challenge;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,9 @@ import android.widget.TextView;
 import com.math_riddles.R;
 import com.math_riddles.core.base.BaseActivity;
 import com.math_riddles.core.model.Challenge;
+import com.math_riddles.core.model.Score;
 import com.math_riddles.core.repository.ChallengeRepository;
+import com.math_riddles.core.repository.ScoreRepository;
 import com.math_riddles.screen.challenges.ChallengesActivity;
 
 public class ChallengeActivity extends BaseActivity
@@ -30,6 +31,7 @@ public class ChallengeActivity extends BaseActivity
     protected View popupView;
     protected PopupWindow popupWindow;
     private ChallengeRepository challengeRepository;
+    private ScoreRepository scoreRepository;
 
     @Override
     protected int getLayoutResourceId() {
@@ -41,6 +43,7 @@ public class ChallengeActivity extends BaseActivity
         super.onCreate(savedInstanceState);
 
         challengeRepository = new ChallengeRepository();
+        scoreRepository = new ScoreRepository();
 
         Intent challengeIntent = getIntent();
         challengeId = challengeIntent.getIntExtra("challenge_id", 1);
@@ -51,8 +54,6 @@ public class ChallengeActivity extends BaseActivity
 
         answerET = findViewById(R.id.answer);
         answerET.setShowSoftInputOnFocus(false);
-
-        Log.d("challengeId: %d", Integer.toString(challengeId));
     }
 
     private long getNumberChallenges() {
@@ -65,6 +66,7 @@ public class ChallengeActivity extends BaseActivity
                 showChampionPopup(view);
             }
             else {
+                upgradeScore(challengeId);
                 showSuccessPopup(view);
             }
         }
@@ -95,7 +97,7 @@ public class ChallengeActivity extends BaseActivity
         popupWindow = new PopupWindow(popupView, width, height, focusable);
 
         // show the popup window
-        // which view you pass in doesn't matter, it is only used for the window tolken
+        // which view you pass in doesn't matter, it is only used for the window token
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
     }
 
@@ -125,6 +127,13 @@ public class ChallengeActivity extends BaseActivity
 
         Button nextChallengeBtn = popupView.findViewById(R.id.next_challenge_btn);
         nextChallengeBtn.setOnClickListener(view1 -> nextChallenge(challengeId));
+    }
+
+    private void upgradeScore(int challengeId) {
+        Score currentScore = scoreRepository.getFirst();
+        if (challengeId+1 > currentScore.getChallengeId()) {
+            scoreRepository.updateChallengeId(challengeId + 1);
+        }
     }
 
     private void nextChallenge(int challengeId) {

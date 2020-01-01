@@ -3,6 +3,7 @@ package com.math_riddles.screen.challenges;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -110,6 +111,7 @@ public class ChallengesActivity extends BaseActivity {
         Intent challengeIntent = new Intent(recyclerView.getContext(), ChallengeActivity.class);
         challengeIntent.putExtra("challenge_id", challengeId);
         startActivity(challengeIntent);
+        finish();
     }
 
     private void unlockPreChallenge(int challengeId) {

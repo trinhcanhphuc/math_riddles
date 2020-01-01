@@ -43,4 +43,13 @@ public class ScoreRepository {
         realmObject.setChallengeId(item.getChallengeId());
         realm.commitTransaction();
     }
+
+    public void updateChallengeId(int challengeId) {
+
+        Realm realm = getRealm();
+        Score score = getFirst();
+        realm.beginTransaction();
+        score.setChallengeId(challengeId);
+        realm.commitTransaction();
+    }
 }
