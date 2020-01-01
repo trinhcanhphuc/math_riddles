@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screen.level.ChallengeActivity">
+    tools:context=".screen.challenge.ChallengeActivity">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <fragment
             android:id="@+id/question"
-            android:name="com.math_riddles.screen.level.QuestionFragment"
+            android:name="com.math_riddles.screen.challenge.QuestionFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight=".80" >

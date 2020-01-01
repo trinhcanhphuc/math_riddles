@@ -15,10 +15,10 @@ public class ChallengeRepository {
         return Realm.getInstance(realmConfiguration);
     }
 
-    public Challenge getById(int level) {
+    public Challenge getById(int challengeId) {
         Realm realm = getRealm();
         RealmQuery<Challenge> query = realm.where(Challenge.class);
-        query.equalTo("id", level);
+        query.equalTo("id", challengeId);
         return query.findFirst();
     }
 

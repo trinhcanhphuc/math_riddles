@@ -1,4 +1,4 @@
-package com.math_riddles.screen.level;
+package com.math_riddles.screen.challenge;
 
 import android.content.Context;
 import android.net.Uri;

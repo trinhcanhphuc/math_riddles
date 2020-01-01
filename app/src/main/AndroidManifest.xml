@@ -28,9 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screen.level.LevelActivity"
+        <activity android:name=".screen.challenges.ChallengesActivity"
             android:theme="@style/AppTheme.Splash" />
-        <activity android:name=".screen.level.ChallengeActivity"
+        <activity android:name=".screen.challenge.ChallengeActivity"
             android:theme="@style/AppTheme.Splash" />
 
         <meta-data

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
-import com.math_riddles.screen.level.LevelActivity;
+import com.math_riddles.screen.challenges.ChallengesActivity;
 import com.math_riddles.R;
 import com.math_riddles.core.base.BaseActivity;
 
@@ -46,8 +46,8 @@ public class HomeActivity extends BaseActivity {
 
     protected void play(View v) {
 
-        Intent levelsIntent = new Intent(v.getContext(), LevelActivity.class);
-        startActivity(levelsIntent);
+        Intent challengesIntent = new Intent(v.getContext(), ChallengesActivity.class);
+        startActivity(challengesIntent);
     }
 
     protected void exitConfirm(View v) {

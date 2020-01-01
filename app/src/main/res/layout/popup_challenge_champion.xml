@@ -13,8 +13,8 @@
         android:text="You are champion" />
 
     <Button
-        android:id="@+id/return_level_page_btn"
-        android:text="@string/return_level_page"
+        android:id="@+id/return_challenges_page_btn"
+        android:text="@string/return_challenges_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

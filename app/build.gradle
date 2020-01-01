@@ -26,7 +26,7 @@ android {
                             // layout
                             'src/main/res/layout/main',
                             'src/main/res/layout/home',
-                            'src/main/res/layout/level',
+                            'src/main/res/layout/challenges',
                             'src/main/res/layout/question',
                             'src/main/res/layout/login',
 

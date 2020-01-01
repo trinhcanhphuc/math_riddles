@@ -27,38 +27,12 @@
                 android:layout_marginBottom="50dp"
                 android:textStyle="bold"
             />
-
             <Button
                 android:id="@+id/play_btn"
                 android:background="@drawable/button_play"
                 android:text="@string/play"
                 android:textColor="@color/white"
                 style="@style/home_button" />
-
-            <Button
-                android:visibility="gone"
-                android:id="@+id/levels_btn"
-                android:background="@drawable/shape_button_active"
-                style="@style/home_button"
-                android:text="@string/levels"/>
-            <Button
-                android:visibility="gone"
-                android:id="@+id/follow_us_btn"
-                android:background="@drawable/shape_button_active"
-                style="@style/home_button"
-                android:text="@string/follow_us" />
-            <Button
-                android:visibility="gone"
-                android:id="@+id/sound_on_btn"
-                android:background="@drawable/shape_button_active"
-                style="@style/home_button"
-                android:text="@string/sounds_on" />
-            <Button
-                android:visibility="gone"
-                android:id="@+id/restart_btn"
-                android:background="@drawable/shape_button_warning"
-                style="@style/home_button"
-                android:text="@string/restart" />
             <Button
                 android:id="@+id/setting_btn"
                 android:background="@drawable/button_setting"

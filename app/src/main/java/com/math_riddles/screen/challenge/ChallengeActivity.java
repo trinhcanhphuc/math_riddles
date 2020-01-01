@@ -1,4 +1,4 @@
-package com.math_riddles.screen.level;
+package com.math_riddles.screen.challenge;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -17,16 +17,16 @@ import com.math_riddles.R;
 import com.math_riddles.core.base.BaseActivity;
 import com.math_riddles.core.model.Challenge;
 import com.math_riddles.core.repository.ChallengeRepository;
-import com.math_riddles.screen.challenge.KeyboardFragment;
+import com.math_riddles.screen.challenges.ChallengesActivity;
 
 public class ChallengeActivity extends BaseActivity
         implements QuestionFragment.OnFragmentInteractionListener,
         KeyboardFragment.OnFragmentInteractionListener {
 
-    protected int level;
+    protected int challengeId;
     protected EditText answerET;
     protected TextView questionContentTV;
-    protected Challenge q;
+    protected Challenge challenge;
     protected View popupView;
     protected PopupWindow popupWindow;
     private ChallengeRepository challengeRepository;
@@ -43,25 +43,25 @@ public class ChallengeActivity extends BaseActivity
         challengeRepository = new ChallengeRepository();
 
         Intent challengeIntent = getIntent();
-        level = challengeIntent.getIntExtra("level", 1);
-        q = challengeRepository.getById(level);
+        challengeId = challengeIntent.getIntExtra("challenge_id", 1);
+        challenge = challengeRepository.getById(challengeId);
 
         questionContentTV = findViewById(R.id.question_content);
-        questionContentTV.setText(q.getQuestion());
+        questionContentTV.setText(challenge.getQuestion());
 
         answerET = findViewById(R.id.answer);
         answerET.setShowSoftInputOnFocus(false);
 
-        Log.d("level: %d", Integer.toString(level));
+        Log.d("challengeId: %d", Integer.toString(challengeId));
     }
 
-    private long getNumberLevels() {
+    private long getNumberChallenges() {
         return challengeRepository.size();
     }
 
     public void submitAnswer(View view) {
-        if (isAnswerTrue(level)) {
-            if (level == getNumberLevels()) {
+        if (isAnswerTrue()) {
+            if (challengeId == getNumberChallenges()) {
                 showChampionPopup(view);
             }
             else {
@@ -102,10 +102,10 @@ public class ChallengeActivity extends BaseActivity
     private void showChampionPopup(View view) {
         showPopup(view, R.layout.popup_challenge_champion);
 
-        Button return_level_page_btn = popupView.findViewById(R.id.return_level_page_btn);
-        return_level_page_btn.setOnClickListener(view1 -> {
-            Intent levelsIntent = new Intent(view1.getContext(), LevelActivity.class);
-            startActivity(levelsIntent);
+        Button return_challenges_page_btn = popupView.findViewById(R.id.return_challenges_page_btn);
+        return_challenges_page_btn.setOnClickListener(view1 -> {
+            Intent challengesIntent = new Intent(view1.getContext(), ChallengesActivity.class);
+            startActivity(challengesIntent);
             finish();
         });
     }
@@ -123,13 +123,13 @@ public class ChallengeActivity extends BaseActivity
     private void showSuccessPopup(View view) {
         showPopup(view, R.layout.popup_challenge_correct);
 
-        Button nextLevelBtn = popupView.findViewById(R.id.next_level_btn);
-        nextLevelBtn.setOnClickListener(view1 -> nextLevel(level));
+        Button nextChallengeBtn = popupView.findViewById(R.id.next_challenge_btn);
+        nextChallengeBtn.setOnClickListener(view1 -> nextChallenge(challengeId));
     }
 
-    private void nextLevel(int level) {
+    private void nextChallenge(int challengeId) {
         Intent challengeIntent = new Intent(this, ChallengeActivity.class);
-        challengeIntent.putExtra("level", level+1);
+        challengeIntent.putExtra("challenge_id", challengeId+1);
         startActivity(challengeIntent);
         finish();
     }
@@ -138,18 +138,18 @@ public class ChallengeActivity extends BaseActivity
 
     }
 
-    private boolean isAnswerTrue(int level) {
+    private boolean isAnswerTrue() {
         EditText answerET = findViewById(R.id.answer);
         String answerFromUser = answerET.getText().toString();
-        return answerFromUser.equals(getAnswer(level));
+        return answerFromUser.equals(getAnswer());
     }
 
     private String getSolution() {
-        return q.getSolution();
+        return challenge.getSolution();
     }
 
-    private String getAnswer(int level) {
-        return q.getAnswer(); }
+    private String getAnswer() {
+        return challenge.getAnswer(); }
 
     private void updateAnswerByValueFromKeyboard(String value) {
         EditText answer = findViewById(R.id.answer);

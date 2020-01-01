@@ -10,7 +10,12 @@ public class Challenge extends RealmObject {
     private String answer;
     private String solution;
 
-    public Challenge() {}
+    public Challenge() {
+        this.id = -1;
+        this.question = "?";
+        this.answer = "?";
+        this.solution = "?";
+    }
 
     public Challenge(int id, String question, String answer, String solution) {
         this.id = id;

@@ -15,7 +15,7 @@
 
     <string name="play">Play</string>
     <string name="setting">Setting</string>
-    <string name="levels">Levels</string>
+    <string name="challenges">Challenges</string>
     <string name="follow_us">Follow us</string>
     <string name="sounds_on">Sounds on</string>
     <string name="restart">Restart</string>
@@ -25,7 +25,7 @@
     <string name="exit_game">Do You Want To Exit?</string>
 
     <string name="next_challenge">Next Challenge</string>
-    <string name="return_level_page">Return Level Page</string>
+    <string name="return_challenges_page">Return Challeges Page</string>
 
     <string name="back">Back</string>
 

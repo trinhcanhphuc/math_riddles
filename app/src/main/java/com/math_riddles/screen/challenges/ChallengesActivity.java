@@ -1,4 +1,4 @@
-package com.math_riddles.screen.level;
+package com.math_riddles.screen.challenges;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,14 +10,16 @@ import android.view.View;
 import com.math_riddles.R;
 import com.math_riddles.common.CenterZoomLayoutManager;
 import com.math_riddles.core.base.BaseActivity;
+import com.math_riddles.core.model.Challenge;
 import com.math_riddles.core.repository.ChallengeRepository;
 import com.math_riddles.core.repository.ScoreRepository;
+import com.math_riddles.screen.challenge.ChallengeActivity;
 
 import java.util.ArrayList;
 
-public class LevelActivity extends BaseActivity {
+public class ChallengesActivity extends BaseActivity {
     RecyclerView recyclerView;
-    ArrayList<String> challenges;
+    ArrayList<Challenge> challenges;
     RecyclerView.LayoutManager RecyclerViewLayoutManager;
     RecyclerViewAdapter RecyclerViewHorizontalAdapter;
     CenterZoomLayoutManager HorizontalLayout ;
@@ -28,7 +30,7 @@ public class LevelActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.level_activity;
+        return R.layout.challenges_activity;
     }
 
     @Override
@@ -41,8 +43,8 @@ public class LevelActivity extends BaseActivity {
     }
 
     public void initCardList() {
-        View levelList = findViewById( R.id.level_list );
-        recyclerView = levelList.findViewById(R.id.rv);
+        View challengeList = findViewById( R.id.challenge_list );
+        recyclerView = challengeList.findViewById(R.id.rv);
 
         RecyclerViewLayoutManager = new CenterZoomLayoutManager(getApplicationContext());
 
@@ -53,7 +55,7 @@ public class LevelActivity extends BaseActivity {
 
         RecyclerViewHorizontalAdapter = new RecyclerViewAdapter(challenges);
 
-        HorizontalLayout = new CenterZoomLayoutManager(LevelActivity.this, CenterZoomLayoutManager.HORIZONTAL, false);
+        HorizontalLayout = new CenterZoomLayoutManager(ChallengesActivity.this, CenterZoomLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(HorizontalLayout);
 
         recyclerView.setAdapter(RecyclerViewHorizontalAdapter);
@@ -62,7 +64,7 @@ public class LevelActivity extends BaseActivity {
         // Adding on item click listener to RecyclerView.
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
-            GestureDetector gestureDetector = new GestureDetector(LevelActivity.this, new GestureDetector.SimpleOnGestureListener() {
+            GestureDetector gestureDetector = new GestureDetector(ChallengesActivity.this, new GestureDetector.SimpleOnGestureListener() {
 
                 @Override public boolean onSingleTapUp(MotionEvent motionEvent) {
 
@@ -79,12 +81,12 @@ public class LevelActivity extends BaseActivity {
 
                     RecyclerViewItemPosition = recyclerView.getChildAdapterPosition(ChildView);
 
-                    int level = RecyclerViewItemPosition + 1;
-                    if (level <= getCurrentLevel()) {
-                        executeChallenge(level);
+                    int challenge = RecyclerViewItemPosition + 1;
+                    if (challenge <= getCurrentChallenge()) {
+                        executeChallenge(challenge);
                     }
                     else {
-                        unlockPreChallenge(level);
+                        unlockPreChallenge(challenge);
                     }
                 }
 
@@ -103,27 +105,27 @@ public class LevelActivity extends BaseActivity {
         });
     }
 
-    private void executeChallenge(int level) {
+    private void executeChallenge(int challengeId) {
 
         Intent challengeIntent = new Intent(recyclerView.getContext(), ChallengeActivity.class);
-        challengeIntent.putExtra("level", level);
+        challengeIntent.putExtra("challenge_id", challengeId);
         startActivity(challengeIntent);
     }
 
-    private void unlockPreChallenge(int level) {
+    private void unlockPreChallenge(int challengeId) {
 
     }
 
     public void AddItemsToRecyclerViewArrayList(){
 
         challenges = new ArrayList<>();
-        int numLevels = getNumberLevels();
-        int currentLevel = getCurrentLevel();
-        for(int i = 0; i < numLevels; i++) {
-            String question = ((i+1) <= currentLevel)
-                    ? challengeRepository.getById(i+1).getQuestion()
-                    : "?";
-            challenges.add(question);
+        int numChallenges = getNumberChallenges();
+        int currentChallenge = getCurrentChallenge();
+        for(int i = 0; i < numChallenges; i++) {
+            Challenge challenge = ((i+1) <= currentChallenge)
+                    ? challengeRepository.getById(i+1)
+                    : new Challenge();
+            challenges.add(challenge);
         }
     }
 
@@ -133,12 +135,12 @@ public class LevelActivity extends BaseActivity {
         enableActivity();
     }
 
-    private int getNumberLevels() {
+    private int getNumberChallenges() {
 
         return challengeRepository.size();
     }
 
-    private int getCurrentLevel() {
+    private int getCurrentChallenge() {
 
         return scoreRepository.getFirst().getChallengeId();
     }

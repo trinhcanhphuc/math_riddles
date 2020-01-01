@@ -30,4 +30,7 @@
     <color name="white">#E2E2E2</color>
     <color name="dark">#60687C</color>
 
+    <color name="card_active">#FF9800</color>
+    <color name="card_inactive">#60687C</color>
+
 </resources>

@@ -32,7 +32,7 @@
             android:fontFamily="@font/noteworthy"
             android:text="@string/answer_correct"/>
         <Button
-            android:id="@+id/next_level_btn"
+            android:id="@+id/next_challenge_btn"
             android:text="@string/next_challenge"
             android:background="@drawable/button_next"
             android:textColor="@color/white"

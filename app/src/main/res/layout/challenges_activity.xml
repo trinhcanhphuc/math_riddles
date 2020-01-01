@@ -30,6 +30,6 @@
             android:textStyle="bold"
             />
 
-        <include android:id="@+id/level_list" layout="@layout/card_list" />
+        <include android:id="@+id/challenge_list" layout="@layout/card_list" />
     </LinearLayout>
 </LinearLayout>
