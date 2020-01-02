@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,20 +15,30 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icon_correct"
-            />
+            android:adjustViewBounds="true"
+            android:background="@drawable/icon_correct" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30dp"
             android:textStyle="bold"
-            android:fontFamily="@font/noteworthy"
+            android:fontFamily="@font/neusa_next_std_medium"
+            android:textColor="@color/black"
+            android:shadowColor="@color/black_shadow"
+            android:shadowDx="10"
+            android:shadowDy="10"
+            android:shadowRadius="5"
             android:text="@string/congrats"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:fontFamily="@font/noteworthy"
+            android:fontFamily="@font/neusa_next_std_medium"
+            android:textColor="@color/black"
+            android:shadowColor="@color/black_shadow"
+            android:shadowDx="10"
+            android:shadowDy="10"
+            android:shadowRadius="5"
             android:text="@string/answer_correct"/>
         <Button
             android:id="@+id/next_challenge_btn"

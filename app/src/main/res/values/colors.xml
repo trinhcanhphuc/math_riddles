@@ -24,6 +24,9 @@
     <color name="color_background_publish">#fdfcea</color>
     <color name="tvCNY">#00C853</color>
 
+    <color name="black">#515C6F</color>
+    <color name="black_shadow">#D6D7DA</color>
+
     <color name="active">#32AD81</color>
     <color name="warning">#E09F17</color>
     <color name="danger">#F15053</color>
