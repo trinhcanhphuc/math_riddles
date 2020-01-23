@@ -6,14 +6,34 @@
     tools:context=".screen.challenge.QuestionFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/question_content"
-        android:textSize="30dp"
-        android:fontFamily="monospace"
-        android:text="A + B = 60\nA - B = 40\nA / B = ?"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center_vertical" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Challenge 1"
+            android:textColor="@color/danger"
+            android:textSize="32sp"
+            android:fontFamily="@font/noteworthy"
+            android:textStyle="bold"
+            android:layout_marginBottom="100dp"
+            />
+
+        <TextView
+            android:id="@+id/question_content"
+            android:textSize="30sp"
+            android:fontFamily="@font/noteworthy"
+            android:text="A + B = 60\nA - B = 40\nA / B = ?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/text_black"
+            android:gravity="center_vertical" />
+    </LinearLayout>
 </FrameLayout>

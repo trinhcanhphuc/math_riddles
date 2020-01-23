@@ -27,21 +27,11 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         // Trigger events
-        Button playBtn = (Button) findViewById(R.id.play_btn);
-        playBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                play(view);
-            }
-        });
+        Button playBtn = findViewById(R.id.play_btn);
+        playBtn.setOnClickListener(view -> play(view));
 
-        Button exitBtn = (Button) findViewById(R.id.exit_btn);
-        exitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                exitConfirm(view);
-            }
-        });
+        Button exitBtn =  findViewById(R.id.exit_btn);
+        exitBtn.setOnClickListener(view -> exitConfirm(view));
     }
 
     protected void play(View v) {
@@ -57,21 +47,11 @@ public class HomeActivity extends BaseActivity {
         exitDialog.setTitle("");
         exitDialog.setContentView(R.layout.dialog_home_exit);
         exitDialog.show();
-        Button dialogExitBtn = (Button) exitDialog.findViewById(R.id.dialog_exit_btn);
-        dialogExitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                exitApp(view);
-            }
-        });
+        Button dialogExitBtn = exitDialog.findViewById(R.id.dialog_exit_btn);
+        dialogExitBtn.setOnClickListener(view -> exitApp(view));
 
-            Button dialogCancelBtn = (Button) exitDialog.findViewById(R.id.dialog_cancel_btn);
-        dialogCancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cancel(view);
-            }
-        });
+            Button dialogCancelBtn = exitDialog.findViewById(R.id.dialog_cancel_btn);
+        dialogCancelBtn.setOnClickListener(view -> cancel(view));
     }
 
     protected void exitApp(View v) {

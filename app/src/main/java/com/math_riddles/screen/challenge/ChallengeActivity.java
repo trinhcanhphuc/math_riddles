@@ -3,6 +3,8 @@ package com.math_riddles.screen.challenge;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +24,8 @@ import com.math_riddles.screen.challenges.ChallengesActivity;
 
 public class ChallengeActivity extends BaseActivity
         implements QuestionFragment.OnFragmentInteractionListener,
-        KeyboardFragment.OnFragmentInteractionListener {
+        KeyboardFragment.OnFragmentInteractionListener,
+        ChoiceFragment.OnFragmentInteractionListener {
 
     protected int challengeId;
     protected EditText answerET;
@@ -51,9 +54,6 @@ public class ChallengeActivity extends BaseActivity
 
         questionContentTV = findViewById(R.id.question_content);
         questionContentTV.setText(challenge.getQuestion());
-
-        answerET = findViewById(R.id.answer);
-        answerET.setShowSoftInputOnFocus(false);
     }
 
     private long getNumberChallenges() {
@@ -112,11 +112,19 @@ public class ChallengeActivity extends BaseActivity
         });
     }
 
+    private void dynamicAddChoiceFrag() {
+        FragmentManager fm = getSupportFragmentManager();
+
+        FragmentTransaction ftAdd = fm.beginTransaction();
+        ftAdd.add(R.id.challenge_activity, new ChoiceFragment());
+        ftAdd.commit();
+    }
+
     public void showHintPopup(View view) {
         showPopup(view, R.layout.popup_challenge_hint);
 
         TextView solutionTV = popupView.findViewById(R.id.solution_tv);
-        solutionTV.setText(getSolution());
+//        solutionTV.setText(getSolution());
 
         Button exitBtn = popupView.findViewById(R.id.exit_btn);
         exitBtn.setOnClickListener(view1 -> popupWindow.dismiss());
@@ -151,10 +159,6 @@ public class ChallengeActivity extends BaseActivity
         EditText answerET = findViewById(R.id.answer);
         String answerFromUser = answerET.getText().toString();
         return answerFromUser.equals(getAnswer());
-    }
-
-    private String getSolution() {
-        return challenge.getSolution();
     }
 
     private String getAnswer() {

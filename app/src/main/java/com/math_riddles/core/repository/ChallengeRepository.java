@@ -44,7 +44,6 @@ public class ChallengeRepository {
             Challenge realmObject = realm.createObject(Challenge.class, item.getId());
             realmObject.setQuestion(item.getQuestion());
             realmObject.setAnswer(item.getAnswer());
-            realmObject.setSolution(item.getSolution());
         }
         realm.commitTransaction();
     }

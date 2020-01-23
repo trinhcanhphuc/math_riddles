@@ -6,26 +6,37 @@ import io.realm.annotations.PrimaryKey;
 public class Challenge extends RealmObject {
     @PrimaryKey
     private int id;
+    private int type;
     private String question;
+    private String style;
+    private String options;
     private String answer;
-    private String solution;
 
     public Challenge() {
         this.id = -1;
         this.question = "?";
+        this.style = "?";
+        this.options = "?";
         this.answer = "?";
-        this.solution = "?";
     }
 
-    public Challenge(int id, String question, String answer, String solution) {
+    public Challenge(int id, int type, String question, String style, String options, String answer) {
         this.id = id;
+        this.type = type;
         this.question = question;
+        this.style = style;
+        this.options = options;
         this.answer = answer;
-        this.solution = solution;
     }
 
     public int getId() {
         return id;
+    }
+
+    public int getType() { return type; }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public String getQuestion() { return question; }
@@ -34,20 +45,28 @@ public class Challenge extends RealmObject {
         this.question = question;
     }
 
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getOptions() {
+        return options;
+    }
+
+    public void setOptions(String options) {
+        this.options = options;
+    }
+
     public String getAnswer() {
         return answer;
     }
 
     public void setAnswer(String answer) {
         this.answer = answer;
-    }
-
-    public String getSolution() {
-        return solution;
-    }
-
-    public void setSolution(String solution) {
-        this.solution = solution;
     }
 
 }

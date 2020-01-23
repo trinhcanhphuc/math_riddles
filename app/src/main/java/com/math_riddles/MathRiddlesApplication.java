@@ -113,12 +113,14 @@ public class MathRiddlesApplication extends Application {
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
                 int id = jo_inside.getInt("id");
-                String question= jo_inside.getString("question");
+                int type = jo_inside.getInt("type");
+                String style = jo_inside.getString("style");
+                String question = jo_inside.getString("question");
+                String options = jo_inside.getString("options");
                 String answer = jo_inside.getString("answer");
-                String solution = jo_inside.getString("solution");
 
                 //Add your values in your `ArrayList` as below:
-                Challenge item  = new Challenge(id, question, answer, solution);
+                Challenge item  = new Challenge(id, type, question, style, options, answer);
 
                 formList.add(item);
             }

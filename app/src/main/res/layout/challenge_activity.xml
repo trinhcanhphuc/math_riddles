@@ -7,24 +7,25 @@
     tools:context=".screen.challenge.ChallengeActivity">
     <LinearLayout
         android:orientation="vertical"
+        android:id="@+id/challenge_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <fragment
-            android:id="@+id/question"
+            android:id="@+id/question_fragment"
             android:name="com.math_riddles.screen.challenge.QuestionFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".80" >
+            android:layout_weight=".70" >
         </fragment>
 
         <fragment
-            android:id="@+id/keyboard"
-            android:layout_below="@+id/question"
-            android:name="com.math_riddles.screen.challenge.KeyboardFragment"
+            android:id="@+id/choice_btns_fragment"
+            android:layout_below="@+id/question_fragment"
+            android:name="com.math_riddles.screen.challenge.ChoiceFragment"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".20" >
+            android:layout_weight=".30" >
         </fragment>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

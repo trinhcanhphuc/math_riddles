@@ -31,7 +31,6 @@
                 android:id="@+id/play_btn"
                 android:background="@drawable/button_play"
                 android:text="@string/play"
-                android:textColor="@color/white"
                 style="@style/home_button" />
             <Button
                 android:id="@+id/setting_btn"
