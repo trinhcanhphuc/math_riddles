@@ -1,5 +1,7 @@
 package com.math_riddles.core.model;
 
+import com.math_riddles.common.Utilities;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -54,7 +56,7 @@ public class Challenge extends RealmObject {
     }
 
     public String getOptions() {
-        return options;
+        return Utilities.trimWhiteSpace(options);
     }
 
     public void setOptions(String options) {

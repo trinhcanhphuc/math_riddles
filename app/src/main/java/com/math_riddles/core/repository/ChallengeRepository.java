@@ -43,6 +43,8 @@ public class ChallengeRepository {
         for (Challenge item : list) {
             Challenge realmObject = realm.createObject(Challenge.class, item.getId());
             realmObject.setQuestion(item.getQuestion());
+            realmObject.setOptions(item.getOptions());
+            realmObject.setStyle(item.getStyle());
             realmObject.setAnswer(item.getAnswer());
         }
         realm.commitTransaction();

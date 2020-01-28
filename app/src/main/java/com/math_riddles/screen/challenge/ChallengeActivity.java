@@ -3,6 +3,8 @@ package com.math_riddles.screen.challenge;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.test.espresso.core.deps.guava.base.Splitter;
+import android.support.test.espresso.core.deps.guava.collect.Lists;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Gravity;
@@ -21,6 +23,11 @@ import com.math_riddles.core.model.Score;
 import com.math_riddles.core.repository.ChallengeRepository;
 import com.math_riddles.core.repository.ScoreRepository;
 import com.math_riddles.screen.challenges.ChallengesActivity;
+import com.math_riddles.screen.challenges.RecyclerViewAdapter;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ChallengeActivity extends BaseActivity
         implements QuestionFragment.OnFragmentInteractionListener,
@@ -33,8 +40,10 @@ public class ChallengeActivity extends BaseActivity
     protected Challenge challenge;
     protected View popupView;
     protected PopupWindow popupWindow;
+    protected ArrayList<View> chooseBtns;
     private ChallengeRepository challengeRepository;
     private ScoreRepository scoreRepository;
+
 
     @Override
     protected int getLayoutResourceId() {
@@ -54,25 +63,43 @@ public class ChallengeActivity extends BaseActivity
 
         questionContentTV = findViewById(R.id.question_content);
         questionContentTV.setText(challenge.getQuestion());
+
+        initButtonsChoose();
     }
 
-    private long getNumberChallenges() {
+    private void initButtonsChoose() {
+        chooseBtns =  (findViewById(R.id.btn_list_choose)).getTouchables();
+        for(int i = 0; i < chooseBtns.size(); i++) {
+            Button chooseBtn = (Button) chooseBtns.get(i);
+            chooseBtn.setText(Integer.toString(getOptionValue(challenge, i)));
+        }
+    }
+
+    private long getChallengesSize() {
         return challengeRepository.size();
     }
 
-    public void submitAnswer(View view) {
-        if (isAnswerTrue()) {
-            if (challengeId == getNumberChallenges()) {
-                showChampionPopup(view);
+    public void submitAnswer(View v) {
+        int position = Integer.parseInt(v.getTag().toString());
+        int submitValue = getOptionValue(challenge, position-1);
+        boolean isAnswerValid = isAnswerValid(submitValue);
+        if (isAnswerValid) {
+            if (challengeId == getChallengesSize()) {
+                showChampionPopup(v);
             }
             else {
                 upgradeScore(challengeId);
-                showSuccessPopup(view);
+                showSuccessPopup(v);
             }
         }
         else {
             showWrongAlert();
         }
+    }
+
+    public int getOptionValue(Challenge challenge, int position) {
+        List<String> options = Lists.newArrayList(Splitter.on(",").split(challenge.getOptions()));
+        return Integer.parseInt(options.get(position));
     }
 
     public void clearAnswer(View view) {
@@ -155,10 +182,8 @@ public class ChallengeActivity extends BaseActivity
 
     }
 
-    private boolean isAnswerTrue() {
-        EditText answerET = findViewById(R.id.answer);
-        String answerFromUser = answerET.getText().toString();
-        return answerFromUser.equals(getAnswer());
+    private boolean isAnswerValid(int submitValue) {
+        return Integer.toString(submitValue).equals(getAnswer());
     }
 
     private String getAnswer() {

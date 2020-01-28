@@ -12,4 +12,7 @@ import android.view.WindowManager;
 
 public class Utilities {
 
+    public static String trimWhiteSpace(String input) {
+        return input.replaceAll(" ","");
+    }
 }
