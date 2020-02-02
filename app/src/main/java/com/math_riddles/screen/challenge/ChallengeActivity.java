@@ -10,6 +10,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -23,10 +25,9 @@ import com.math_riddles.core.model.Score;
 import com.math_riddles.core.repository.ChallengeRepository;
 import com.math_riddles.core.repository.ScoreRepository;
 import com.math_riddles.screen.challenges.ChallengesActivity;
-import com.math_riddles.screen.challenges.RecyclerViewAdapter;
+import com.math_riddles.screen.home.HomeActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ChallengeActivity extends BaseActivity
@@ -93,7 +94,7 @@ public class ChallengeActivity extends BaseActivity
             }
         }
         else {
-            showWrongAlert();
+            showWrongPopup(v);
         }
     }
 
@@ -122,6 +123,7 @@ public class ChallengeActivity extends BaseActivity
         int height = LinearLayout.LayoutParams.MATCH_PARENT;
         boolean focusable = true; // lets taps outside the popup also dismiss it
         popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow.setAnimationStyle(R.style.popup_animation);
 
         // show the popup window
         // which view you pass in doesn't matter, it is only used for the window token
@@ -131,10 +133,10 @@ public class ChallengeActivity extends BaseActivity
     private void showChampionPopup(View view) {
         showPopup(view, R.layout.popup_challenge_champion);
 
-        Button return_challenges_page_btn = popupView.findViewById(R.id.return_challenges_page_btn);
-        return_challenges_page_btn.setOnClickListener(view1 -> {
-            Intent challengesIntent = new Intent(view1.getContext(), ChallengesActivity.class);
-            startActivity(challengesIntent);
+        Button returnHomeBtn = popupView.findViewById(R.id.return_home_btn);
+        returnHomeBtn.setOnClickListener(view1 -> {
+            Intent homeIntent = new Intent(view1.getContext(), HomeActivity.class);
+            startActivity(homeIntent);
             finish();
         });
     }
@@ -161,7 +163,14 @@ public class ChallengeActivity extends BaseActivity
         showPopup(view, R.layout.popup_challenge_correct);
 
         Button nextChallengeBtn = popupView.findViewById(R.id.next_challenge_btn);
-        nextChallengeBtn.setOnClickListener(view1 -> nextChallenge(challengeId));
+        nextChallengeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Animation anim = AnimationUtils.loadAnimation(view.getContext(), R.anim.shake);
+                nextChallengeBtn.startAnimation(anim);
+                nextChallenge(challengeId);
+            }
+        });
     }
 
     private void upgradeScore(int challengeId) {
@@ -178,8 +187,11 @@ public class ChallengeActivity extends BaseActivity
         finish();
     }
 
-    private void showWrongAlert() {
+    private void showWrongPopup(View view) {
+        showPopup(view, R.layout.popup_challenge_wrong);
 
+        Button retryBtn = popupView.findViewById(R.id.retry_btn);
+        retryBtn.setOnClickListener(view1 -> popupWindow.dismiss());
     }
 
     private boolean isAnswerValid(int submitValue) {

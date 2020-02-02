@@ -29,10 +29,14 @@
     <color name="black_shadow">#D6D7DA</color>
 
     <color name="active">#32AD81</color>
+    <color name="active_light">#00FFCC</color>
     <color name="warning">#E09F17</color>
+    <color name="warning_light">#FFE600</color>
     <color name="danger">#F15053</color>
+    <color name="danger_light">#F81414</color>
     <color name="white">#FFFFFF</color>
     <color name="dark">#60687C</color>
+    <color name="grey">#E8E8E8</color>
 
     <color name="card_active">#FF9800</color>
     <color name="card_inactive">#60687C</color>

@@ -25,13 +25,19 @@
     <string name="exit_game">Do You Want To Exit?</string>
 
     <string name="next_challenge">Next Challenge</string>
+    <string name="retry">Retry</string>
     <string name="return_challenges_page">Return Challeges Page</string>
+    <string name="return_home">Return Home</string>
 
     <string name="back">Back</string>
 
     <string name="congrats">Congrats</string>
     <string name="answer_correct">Your answer is correct</string>
 
+    <string name="wrong">Wrong</string>
+    <string name="answer_wrong">Your answer is wrong</string>
+
+    <string name="became_champion">You became the championship</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
