@@ -14,6 +14,10 @@ public class Constant {
 	// Network error constant
 	public static final String ERROR_CODE = "-1";
 
+
+	public static final String REALM_DATABASE = "math_riddles.realm";
+
+
 	public static final int MIN_LAST_CLICK_TIME = 1000;
 	public static final String ERROR_NETWORK_NOT_AVAILABLE = "ERROR_NETWORK_NOT_AVAILABLE";
 	public static final String ERROR_CODE_VALIDATE_TOKEN_FAIL = "ERROR_CODE_VALIDATE_TOKEN_FAIL";
@@ -36,5 +40,8 @@ public class Constant {
 	public static final String DATE_FORMAT_HYPHEN_MDY_12h = "MM/dd/yyyy h:mm a";
 	public static final String TIME_FORMAT_24H = "HH:mm";
 	public static final String TIME_FORMAT_12H = "hh:mm a";
+
+
+	public static final String INSTAGRAM_LINK = "https://www.instagram.com/phuctrinh1994/";
 }
 

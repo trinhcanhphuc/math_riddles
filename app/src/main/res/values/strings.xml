@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Math Riddles</string>
+    <string name="app_name">Funny Quizzes</string>
     <string name="action_close">Close</string>
 
     <!-- Common error -->
@@ -13,14 +13,33 @@
     <string name="err_timeout">Connection timed out, can not connect to the server!</string>
     <string name="err_server">Server error, please try again</string>
 
-    <!-- Home page-->
     <string name="play">Play</string>
-    <string name="levels">Levels</string>
+    <string name="setting">Setting</string>
+    <string name="challenges">Challenges</string>
     <string name="follow_us">Follow us</string>
     <string name="sounds_on">Sounds on</string>
     <string name="restart">Restart</string>
     <string name="exit">Exit</string>
-
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="cancel">Cancel</string>
+    <string name="exit_game">Do You Want To Exit?</string>
+
+    <string name="next_challenge">Next Challenge</string>
+    <string name="retry">Retry</string>
+    <string name="return_challenges_page">Return Challeges Page</string>
+    <string name="return_home">Return Home</string>
+
+    <string name="back">Back</string>
+
+    <string name="congrats">Congrats</string>
+    <string name="answer_correct">Your answer is correct</string>
+
+    <string name="wrong">Wrong</string>
+    <string name="answer_wrong">Your answer is wrong</string>
+
+    <string name="became_champion">You became the championship</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

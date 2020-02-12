@@ -37,7 +37,7 @@ public class LoginActivity extends BaseActivity implements LoginView{
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.activity_login;
+        return R.layout.login_activity;
     }
 
     @OnClick(R.id.act_login_btn_action) void onClick(View view) {

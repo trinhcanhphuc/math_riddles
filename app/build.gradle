@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 28
@@ -15,6 +16,33 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            // layout
+                            'src/main/res/layout/main',
+                            'src/main/res/layout/home',
+                            'src/main/res/layout/challenges',
+                            'src/main/res/layout/question',
+                            'src/main/res/layout/login',
+
+                            'src/main/res/layout/dialog',
+                            'src/main/res/layout/popup',
+
+                            'src/main/res/layout',
+
+                            // drawable
+                            'src/main/res/custom',
+
+                            'src/main/res/drawable',
+
+
+                            'src/main/res'
+                    ]
         }
     }
 
